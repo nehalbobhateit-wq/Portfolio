@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nehal Bobhate — QA Engineer & Accessibility Specialist</title>
-  <meta name="description" content="Portfolio of Nehal Bobhate — QA Engineer specializing in Accessibility Testing and Test Automation. WCAG, Selenium, Cucumber, TestNG." />
+  <title>Nehal Bobhate — Automation Test Engineer & Accessibility Specialist</title>
+  <meta name="description" content="Portfolio of Nehal Bobhate — Automation Test Engineer specializing in Accessibility Testing and Test Automation. WCAG, Selenium, TestNG, Cucumber." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -23,12 +23,17 @@
     @keyframes nb-pulse  { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.5;transform:scale(1.15);} }
     @keyframes nb-blink  { 0%,100%{opacity:1;} 50%{opacity:0;} }
 
+    @media (prefers-reduced-motion: reduce) {
+      .nb-hero, .nb-pulse, .nb-blink { animation: none !important; }
+    }
+
     .nb-hero  { animation: nb-fadeup 1s ease forwards; }
     .nb-pulse { animation: nb-pulse 2s infinite; }
     .nb-blink { animation: nb-blink 1s infinite; }
 
     .nb-nav-btn { transition: color .2s, border-color .2s; cursor:pointer; background:none; border:none; font-family:'DM Sans',sans-serif; }
-    .nb-nav-btn:hover { color:#00c8a0 !important; }
+    .nb-nav-btn:hover, .nb-nav-btn:focus-visible { color:#00c8a0 !important; }
+    .nb-nav-btn:focus-visible { outline: 2px solid #00c8a0; outline-offset: 3px; }
 
     .nb-chip { transition: background .2s, border-color .2s, color .2s, transform .15s; cursor:default; }
     .nb-chip:hover { background:rgba(0,200,160,.18)!important; border-color:#00c8a0!important; color:#00c8a0!important; transform:translateY(-2px) scale(1.03); }
@@ -43,10 +48,12 @@
     .nb-exp:hover { border-left-color:#00c8a0!important; }
 
     .nb-cta { transition: transform .18s, box-shadow .18s; }
-    .nb-cta:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,200,160,.25); }
+    .nb-cta:hover, .nb-cta:focus-visible { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,200,160,.25); }
 
     .nb-ghost { transition: background .2s, border-color .2s, color .2s, transform .18s; }
-    .nb-ghost:hover { background:rgba(0,200,160,.1)!important; border-color:rgba(0,200,160,.5)!important; color:#00c8a0!important; transform:translateY(-2px); }
+    .nb-ghost:hover, .nb-ghost:focus-visible { background:rgba(0,200,160,.1)!important; border-color:rgba(0,200,160,.5)!important; color:#00c8a0!important; transform:translateY(-2px); }
+
+    a:focus-visible, button:focus-visible { outline: 2px solid #00c8a0; outline-offset: 3px; }
   </style>
 </head>
 <body>
@@ -55,62 +62,87 @@
   <script type="text/babel">
     const { useState, useEffect } = React;
 
-    const TITLES = ["QA Engineer","Accessibility Specialist","Automation Engineer","SDET"];
+    const TITLES = ["Automation Test Engineer","Accessibility Specialist","QA Engineer"];
 
+    // All data below is sourced directly from the verified resume.
     const SKILLS = {
-      "Accessibility Standards": ["WCAG 2.1/2.2","WAI-ARIA","Section 508","ACR / VPAT","Semantic HTML"],
-      "Assistive Technologies": ["NVDA","JAWS","TalkBack","axe DevTools","WAVE","Keyboard Navigation","Color Contrast Analysis"],
-      "Testing Methodologies": ["Manual Testing","Functional Testing","Regression Testing","API Testing","Cross-Browser Testing","Agile / Scrum"],
-      "Automation Stack": ["Selenium","Cucumber (BDD)","TestNG","RestAssured","GitHub Actions CI/CD","Allure Reports","Selenium Grid"],
-      "Programming": ["Java","Python","SQL","HTML","CSS"],
-      "Tools & Tracking": ["JIRA","Postman","Git / GitHub"],
+      "Programming Language": ["Java"],
+      "Automation Tools / Frameworks": ["Selenium WebDriver","TestNG","Cucumber (BDD)","Page Object Model (POM)"],
+      "API Testing": ["Postman"],
+      "Accessibility Testing": ["WCAG 2.1 Compliance","NVDA","VoiceOver","TalkBack"],
+      "CI/CD & Build Tools": ["Jenkins","Maven"],
+      "Version Control": ["Git","GitHub"],
+      "Defect & Project Tracking": ["JIRA","ClickUp"],
+      "Test Reporting": ["Extent Reports","TestNG Reports"],
+      "Testing Types": ["Functional","Regression","Smoke","Sanity","Usability","Cross-Browser","Accessibility"],
     };
 
     const EXPERIENCE = [
       {
         company: "Tech Mahindra",
-        role: "Software Engineer — QA Accessibility Tester",
-        duration: "2023 – Present",
+        role: "Software Engineer",
+        duration: "Jul 2024 – Present",
         location: "Ahmedabad, India",
-        bullets: [
-          "Execute manual screen reader testing with NVDA, JAWS, and TalkBack — including keyboard navigation and color contrast analysis — to ensure inclusive experiences for users with disabilities.",
-          "Document, report, and track accessibility defects in JIRA, providing actionable remediation guidance that drives timely resolution across cross-functional development teams.",
-          "Validate semantic HTML structure and WAI-ARIA implementation to ensure robust cross-platform and cross-browser compatibility.",
+        phases: [
+          {
+            label: "Automation Testing — Jan 2026 to Present",
+            sub: "Client Domain: Social Media · Team Size: 4–7 members",
+            bullets: [
+              "Developed and maintained 30+ automated test scripts using Java, Selenium WebDriver, TestNG, and Cucumber (BDD), contributing to and extending an existing Page Object Model (POM) framework.",
+              "Authored and executed Cucumber feature files, step definitions, and test runners for behavior-driven test scenarios.",
+              "Performed cross-browser testing across Chrome, Firefox, and Edge; executed automated suites within an existing Jenkins CI/CD pipeline.",
+              "Reduced regression testing turnaround time by approximately 30% by automating repetitive functional and smoke test scenarios.",
+              "Performed API testing using Postman, validating API responses, status codes, and business logic.",
+              "Logged, tracked, and verified 100+ defects in JIRA, partnering with developers and business analysts on automation-ready test scenarios.",
+            ],
+          },
+          {
+            label: "Manual & Accessibility Testing — Jul 2024 to Dec 2025",
+            sub: "Web & Mobile Application · Team Size: 4–7 members",
+            bullets: [
+              "Executed an average of 50 manual test cases daily across Functional, Regression, Smoke, Sanity, and Accessibility Testing.",
+              "Specialized in WCAG 2.1 compliance testing and screen-reader validation using NVDA, VoiceOver, and TalkBack.",
+              "Analyzed business requirements to prepare test scenarios, test cases, and test data; participated in sprint planning and defect triage.",
+              "Identified, documented, and tracked 5–10 defects per day in JIRA, including severity classification and reproduction steps.",
+              "Conducted end-to-end and user acceptance testing support, validating UI, functionality, and usability against requirements.",
+            ],
+          },
         ],
-        tags: ["WCAG 2.1/2.2","NVDA","JAWS","axe DevTools","JIRA","WAI-ARIA"],
+        awards: [
+          { name: "Pat on the Back Award", date: "Jan 2026", desc: "For ensuring WCAG compliance and leading ongoing accessibility knowledge-sharing sessions for the team." },
+          { name: "Bravo Award", date: "Oct 2024", desc: "For outstanding performance, dedication, and contribution to project success." },
+        ],
+        tags: ["Selenium","Java","TestNG","Cucumber","WCAG 2.1","NVDA","VoiceOver","TalkBack","JIRA","Jenkins"],
       },
       {
-        company: "Freelance QA Consultant",
-        role: "QA Engineer — Salon Management Application",
-        duration: "Contract / Freelance",
+        company: "Freelance QA Tester",
+        role: "Salon Management Application (Remote)",
+        duration: "Oct 2025 – Dec 2025",
         location: "Remote",
-        bullets: [
-          "Authored and executed 150+ manual test cases for end-to-end functional testing of a multi-platform Salon Management App across Android, iOS, and Web environments.",
-          "Validated mobile performance, UI/UX consistency, and core features including real-time appointment scheduling, push notifications, and secure payment gateway integrations.",
-          "Identified and tracked 40+ defects with detailed reproduction steps — contributing to a seamless release with zero critical post-launch bugs.",
+        phases: [
+          {
+            label: "Platforms: Android, iOS, Web (Admin Portal)",
+            sub: "Tools: Java, Selenium WebDriver, TestNG, Maven, Git, JIRA, Postman, Extent Reports",
+            bullets: [
+              "Performed end-to-end testing of a cross-platform salon management application across Android, iOS, and a Web Admin Portal for a freelance client.",
+              "Authored and executed 150+ manual test cases covering functional, regression, smoke, usability, and cross-browser testing scenarios.",
+              "Validated critical business workflows including appointment booking, service management, customer onboarding, staff scheduling, push notifications, and payment gateway integrations.",
+              "Conducted cross-browser testing on Chrome, Edge, and Firefox for the Admin Portal.",
+              "Identified, documented, and tracked 40+ defects with detailed reproduction steps, severity levels, and impact analysis.",
+              "Built and executed automated regression scripts for key flows (Login, Appointment Booking, Customer Registration, Staff Management) using Java, Selenium WebDriver, TestNG, and POM — reducing manual regression execution time by approximately 60%.",
+              "Collaborated directly with developers to validate bug fixes and support a stable, quality-focused release.",
+            ],
+          },
         ],
-        tags: ["Manual Testing","Mobile Testing","Cross-Browser","JIRA","iOS","Android"],
-      },
-    ];
-
-    const PROJECTS = [
-      {
-        name: "Hybrid POM + BDD Automation Framework",
-        desc: "End-to-end test automation framework on AutomationExercise.com featuring Page Object Model + BDD architecture. Covers 50+ UI scenarios and 14 REST API validations with a fully integrated CI/CD pipeline.",
-        stack: ["Selenium","RestAssured","Cucumber","TestNG","Java","GitHub Actions","Allure Reports","Selenium Grid"],
-        highlights: ["50+ UI test cases","14 API validations","CI/CD pipeline","Cross-browser execution"],
-        github: "https://github.com/nehalbobhateit-wq",
-        status: "LIVE",
+        awards: [],
+        tags: ["Selenium WebDriver","TestNG","Java","POM","Mobile Testing","Cross-Browser","JIRA"],
       },
     ];
 
     const CERTS = [
-      { name: "DHS Certification on WCAG Accessibility",  date: "Sep 2025", icon: "♿" },
-      { name: "HackerRank Python Certification",           date: "Aug 2025", icon: "🐍" },
-      { name: "Postman API Testing Certification",         date: "Aug 2024", icon: "📮" },
-      { name: "Crowd Beta Testing Certification",          date: "Jul 2023", icon: "🧪" },
-      { name: "HackerRank SQL Certification",              date: "Jun 2023", icon: "🗄️" },
-      { name: "Software Testing Certification",            date: "2023",     icon: "✅" },
+      { name: "DHS Trusted Tester – WCAG Accessibility Certification", sub: "Credential ID: TT-2509-07772", date: "Sep 2025", icon: "♿" },
+      { name: "Postman API Testing Certification", sub: "", date: "Aug 2024", icon: "📮" },
+      { name: "Software Testing Certification — Selenium, Java, Web Technologies, Manual Testing", sub: "QSpiders, Pune", date: "Mar 2024", icon: "✅" },
     ];
 
     const C = {
@@ -154,7 +186,7 @@
 
       /* Scroll spy */
       useEffect(() => {
-        const ids = ["home","about","skills","experience","projects","certifications","education","contact"];
+        const ids = ["home","about","skills","experience","certifications","education","contact"];
         const fn = () => {
           for (const id of [...ids].reverse()) {
             const el = document.getElementById(id);
@@ -166,14 +198,13 @@
       }, []);
 
       const go = id => document.getElementById(id)?.scrollIntoView({ behavior:"smooth" });
-      const navItems = ["about","skills","experience","projects","certifications","education","contact"];
+      const navItems = ["about","skills","experience","certifications","education","contact"];
 
       return (
         <div style={{ background:C.bg, color:C.text, fontFamily:"'DM Sans',sans-serif", minHeight:"100vh", overflowX:"hidden" }}>
 
           {/* Grid bg */}
           <div style={{ position:"fixed", inset:0, backgroundImage:`linear-gradient(${C.border} 1px,transparent 1px),linear-gradient(90deg,${C.border} 1px,transparent 1px)`, backgroundSize:"64px 64px", opacity:.5, pointerEvents:"none", zIndex:0 }} />
-          {/* Glow */}
           <div style={{ position:"fixed", top:"-8%", right:"-4%", width:"520px", height:"520px", background:"radial-gradient(circle,rgba(0,200,160,.07) 0%,transparent 70%)", pointerEvents:"none", zIndex:0 }} />
           <div style={{ position:"fixed", bottom:"15%", left:"-6%", width:"440px", height:"440px", background:"radial-gradient(circle,rgba(77,159,255,.05) 0%,transparent 70%)", pointerEvents:"none", zIndex:0 }} />
 
@@ -207,7 +238,7 @@
                 <span className="nb-blink" style={{ width:"2px", height:"26px", background:C.accent, display:"inline-block" }} />
               </div>
               <p style={{ fontSize:"17px", color:C.muted, lineHeight:1.75, maxWidth:"560px", marginBottom:"44px" }}>
-                Bridging <span style={{ color:C.text, fontWeight:500 }}>inclusive design</span> and <span style={{ color:C.text, fontWeight:500 }}>test automation</span> — ensuring every user, regardless of ability, experiences software that just <em>works</em>.
+                Bridging <span style={{ color:C.text, fontWeight:500 }}>manual accessibility testing</span> and <span style={{ color:C.text, fontWeight:500 }}>test automation</span> — ensuring every user, regardless of ability, experiences software that just <em>works</em>.
               </p>
               <div style={{ display:"flex", gap:"12px", flexWrap:"wrap" }}>
                 <a href="mailto:nehal.bobhate.it@gmail.com" className="nb-cta"
@@ -224,7 +255,7 @@
                 </a>
               </div>
               <div style={{ display:"flex", gap:"40px", marginTop:"64px", paddingTop:"40px", borderTop:`1px solid ${C.border}`, flexWrap:"wrap" }}>
-                {[["2+","Years Experience"],["150+","Test Cases Written"],["40+","Bugs Caught & Tracked"],["6","Certifications Earned"]].map(([num,label]) => (
+                {[["1.5+","Years Experience"],["200+","Test Cases Authored"],["140+","Defects Identified"],["3","Certifications Earned"]].map(([num,label]) => (
                   <div key={label}>
                     <div style={{ fontFamily:"'Syne',sans-serif", fontSize:"30px", fontWeight:800, color:C.accent, letterSpacing:"-1px" }}>{num}</div>
                     <div style={{ fontSize:"12px", color:C.muted, marginTop:"4px" }}>{label}</div>
@@ -244,17 +275,17 @@
               <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))", gap:"48px", alignItems:"start" }}>
                 <div>
                   <p style={{ fontSize:"16px", lineHeight:1.85, color:C.muted, marginBottom:"20px" }}>
-                    I'm a <span style={{ color:C.text, fontWeight:600 }}>Software Engineer (QA)</span> at Tech Mahindra specializing in <span style={{ color:C.text, fontWeight:600 }}>accessibility testing</span>, with a growing focus on <span style={{ color:C.accent, fontWeight:600 }}>test automation</span>. My work sits at the intersection of inclusive design and engineering quality.
+                    I'm a <span style={{ color:C.text, fontWeight:600 }}>Software Engineer</span> at Tech Mahindra. I started in <span style={{ color:C.text, fontWeight:600 }}>manual and accessibility testing</span>, and over the last six months I've transitioned into <span style={{ color:C.accent, fontWeight:600 }}>automation testing</span> with Selenium, TestNG, and Cucumber — within a real production environment.
                   </p>
                   <p style={{ fontSize:"16px", lineHeight:1.85, color:C.muted, marginBottom:"20px" }}>
-                    I ensure web and mobile products are usable by everyone — including people relying on screen readers, keyboard navigation, and assistive technologies — through deep knowledge of <span style={{ color:C.text }}>WCAG 2.1/2.2</span>, WAI-ARIA, and Section 508.
+                    My accessibility background means I test with real assistive technology — <span style={{ color:C.text }}>NVDA, VoiceOver, and TalkBack</span> — to validate WCAG 2.1 compliance and make sure products work for everyone, not just the average user.
                   </p>
                   <p style={{ fontSize:"16px", lineHeight:1.85, color:C.muted }}>
-                    Outside my day job, I've independently built a full <span style={{ color:C.text }}>Hybrid POM + BDD Automation Framework</span> — because great QA engineers don't just find bugs, they build systems that prevent them.
+                    Outside my full-time role, I took on a freelance QA engagement testing a cross-platform salon management app end-to-end — manual and automated — across Android, iOS, and Web.
                   </p>
                 </div>
                 <div style={{ display:"flex", flexDirection:"column", gap:"10px" }}>
-                  {[["📍","Location","Ahmedabad, India"],["💼","Current Role","QA Accessibility Tester @ Tech Mahindra"],["🎯","Career Goal","Automation Engineer / SDET"],["🌐","Languages","English · Hindi · Marathi"],["📞","Phone","+91 9075569929"],["🐛","Fun Fact","I test every app before recommending it to friends — I always find something."]].map(([icon,label,val]) => (
+                  {[["📍","Location","Ahmedabad, India"],["💼","Current Role","Software Engineer (Automation Test Engineer) @ Tech Mahindra"],["🎯","Career Goal","Automation Test Engineer / SDET"],["🌐","Languages","English · Hindi · Marathi"],["📞","Phone","+91 9075569929"]].map(([icon,label,val]) => (
                     <div key={label} style={{ padding:"13px 16px", background:C.card, borderRadius:"8px", border:`1px solid ${C.border}`, display:"flex", gap:"14px", alignItems:"flex-start" }}>
                       <span style={{ fontSize:"16px", flexShrink:0, marginTop:"1px" }}>{icon}</span>
                       <div>
@@ -310,13 +341,33 @@
                         <div style={{ fontSize:"11.5px", color:C.faint, marginTop:"3px" }}>{exp.location}</div>
                       </div>
                     </div>
-                    <ul style={{ listStyle:"none", display:"flex", flexDirection:"column", gap:"10px", marginTop:"18px" }}>
-                      {exp.bullets.map((b,j) => (
-                        <li key={j} style={{ display:"flex", gap:"12px", fontSize:"14px", color:C.muted, lineHeight:1.75 }}>
-                          <span style={{ color:C.accent, fontSize:"6px", marginTop:"8px", flexShrink:0 }}>◆</span>{b}
-                        </li>
-                      ))}
-                    </ul>
+
+                    {exp.phases.map((phase, pi) => (
+                      <div key={pi} style={{ marginTop:"20px" }}>
+                        <div style={{ fontSize:"12.5px", fontWeight:700, color:C.text, marginBottom:"2px" }}>{phase.label}</div>
+                        <div style={{ fontSize:"12px", color:C.muted, fontStyle:"italic", marginBottom:"12px" }}>{phase.sub}</div>
+                        <ul style={{ listStyle:"none", display:"flex", flexDirection:"column", gap:"10px" }}>
+                          {phase.bullets.map((b,j) => (
+                            <li key={j} style={{ display:"flex", gap:"12px", fontSize:"14px", color:C.muted, lineHeight:1.75 }}>
+                              <span style={{ color:C.accent, fontSize:"6px", marginTop:"8px", flexShrink:0 }}>◆</span>{b}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+
+                    {exp.awards.length > 0 && (
+                      <div style={{ marginTop:"20px", paddingTop:"16px", borderTop:`1px solid ${C.border}`, display:"flex", flexDirection:"column", gap:"8px" }}>
+                        {exp.awards.map((a,k) => (
+                          <div key={k} style={{ fontSize:"13px", color:C.muted, lineHeight:1.6 }}>
+                            <span style={{ color:C.accent, fontWeight:700 }}>🏆 {a.name}</span>
+                            <span style={{ color:C.faint }}> — {a.date}</span>
+                            <div style={{ marginTop:"2px" }}>{a.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
                     <div style={{ display:"flex", flexWrap:"wrap", gap:"7px", marginTop:"20px" }}>
                       {exp.tags.map(t => (
                         <span key={t} style={{ padding:"3px 10px", background:C.accentDim, color:C.accent, borderRadius:"4px", fontSize:"11px", fontWeight:600, fontFamily:"'JetBrains Mono',monospace" }}>{t}</span>
@@ -328,41 +379,8 @@
             </div>
           </section>
 
-          {/* ── PROJECTS ── */}
-          <section id="projects" style={{ padding:"90px 24px", position:"relative" }}>
-            <div style={{ maxWidth:"1120px", margin:"0 auto" }}>
-              <SectionLabel label="PROJECTS" />
-              <h2 style={{ fontFamily:"'Syne',sans-serif", fontSize:"clamp(28px,4vw,44px)", fontWeight:800, marginBottom:"52px", letterSpacing:"-1.5px" }}>
-                Built to <span style={{ color:C.accent }}>break things</span>
-              </h2>
-              <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(340px,1fr))", gap:"20px" }}>
-                {PROJECTS.map((p,i) => (
-                  <div key={i} className="nb-card" style={{ padding:"26px", background:C.card, borderRadius:"10px", border:`1px solid ${C.border}`, display:"flex", flexDirection:"column", gap:"14px" }}>
-                    <span style={{ padding:"3px 10px", background:C.accentDim, color:C.accent, borderRadius:"4px", fontSize:"10px", fontFamily:"'JetBrains Mono',monospace", fontWeight:700, letterSpacing:"1.5px", alignSelf:"flex-start" }}>{p.status}</span>
-                    <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:"18px", fontWeight:700, lineHeight:1.3 }}>{p.name}</h3>
-                    <p style={{ fontSize:"13.5px", color:C.muted, lineHeight:1.75 }}>{p.desc}</p>
-                    <div style={{ display:"flex", flexWrap:"wrap", gap:"6px" }}>
-                      {p.highlights.map(h => <span key={h} style={{ padding:"4px 10px", background:C.accentDim, color:C.accent, borderRadius:"4px", fontSize:"11px", fontWeight:600 }}>{h}</span>)}
-                    </div>
-                    <div style={{ display:"flex", flexWrap:"wrap", gap:"6px" }}>
-                      {p.stack.map(s => <span key={s} style={{ padding:"3px 9px", background:"rgba(255,255,255,0.04)", border:`1px solid ${C.border}`, color:C.muted, borderRadius:"4px", fontSize:"11px" }}>{s}</span>)}
-                    </div>
-                    <div style={{ marginTop:"auto", paddingTop:"14px", borderTop:`1px solid ${C.border}` }}>
-                      <a href={p.github} target="_blank" rel="noreferrer" style={{ fontSize:"13px", color:C.accent, textDecoration:"none", fontWeight:600 }}>⌥ View on GitHub →</a>
-                    </div>
-                  </div>
-                ))}
-                <div style={{ padding:"26px", background:C.card, borderRadius:"10px", border:`1px dashed ${C.faint}`, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:"12px", minHeight:"300px" }}>
-                  <div style={{ fontSize:"36px" }}>🚀</div>
-                  <div style={{ fontFamily:"'Syne',sans-serif", fontSize:"16px", fontWeight:700, color:C.faint }}>More on the way</div>
-                  <div style={{ fontSize:"13px", color:C.faint, textAlign:"center", maxWidth:"200px", lineHeight:1.6 }}>Additional automation and QA projects being documented soon</div>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* ── CERTIFICATIONS ── */}
-          <section id="certifications" style={{ padding:"90px 24px", background:C.surface, position:"relative" }}>
+          <section id="certifications" style={{ padding:"90px 24px", position:"relative" }}>
             <div style={{ maxWidth:"1120px", margin:"0 auto" }}>
               <SectionLabel label="CERTIFICATIONS" />
               <h2 style={{ fontFamily:"'Syne',sans-serif", fontSize:"clamp(28px,4vw,44px)", fontWeight:800, marginBottom:"52px", letterSpacing:"-1.5px" }}>
@@ -370,10 +388,11 @@
               </h2>
               <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(270px,1fr))", gap:"12px" }}>
                 {CERTS.map((cert,i) => (
-                  <div key={i} className="nb-cert" style={{ padding:"16px 18px", background:C.card, borderRadius:"8px", border:`1px solid ${C.border}`, display:"flex", gap:"14px", alignItems:"center" }}>
+                  <div key={i} className="nb-cert" style={{ padding:"16px 18px", background:C.card, borderRadius:"8px", border:`1px solid ${C.border}`, display:"flex", gap:"14px", alignItems:"flex-start" }}>
                     <div style={{ width:"42px", height:"42px", borderRadius:"8px", background:C.accentDim, display:"flex", alignItems:"center", justifyContent:"center", fontSize:"20px", flexShrink:0 }}>{cert.icon}</div>
                     <div>
-                      <div style={{ fontSize:"13.5px", color:C.text, fontWeight:500, lineHeight:1.35 }}>{cert.name}</div>
+                      <div style={{ fontSize:"13.5px", color:C.text, fontWeight:500, lineHeight:1.4 }}>{cert.name}</div>
+                      {cert.sub && <div style={{ fontSize:"11.5px", color:C.muted, marginTop:"3px" }}>{cert.sub}</div>}
                       <div style={{ fontSize:"11px", color:C.muted, marginTop:"4px", fontFamily:"'JetBrains Mono',monospace" }}>{cert.date}</div>
                     </div>
                   </div>
@@ -383,17 +402,18 @@
           </section>
 
           {/* ── EDUCATION ── */}
-          <section id="education" style={{ padding:"90px 24px", position:"relative" }}>
+          <section id="education" style={{ padding:"90px 24px", background:C.surface, position:"relative" }}>
             <div style={{ maxWidth:"1120px", margin:"0 auto" }}>
               <SectionLabel label="EDUCATION" />
               <h2 style={{ fontFamily:"'Syne',sans-serif", fontSize:"clamp(28px,4vw,44px)", fontWeight:800, marginBottom:"52px", letterSpacing:"-1.5px" }}>
                 Academic <span style={{ color:C.accent }}>foundation</span>
               </h2>
-              <div className="nb-exp" style={{ padding:"28px 32px", background:C.card, borderRadius:"10px", border:`1px solid ${C.border}`, borderLeft:`3px solid ${C.accent}`, maxWidth:"620px", display:"flex", justifyContent:"space-between", flexWrap:"wrap", gap:"16px", alignItems:"center" }}>
+              <div className="nb-exp" style={{ padding:"28px 32px", background:C.card, borderRadius:"10px", border:`1px solid ${C.border}`, borderLeft:`3px solid ${C.accent}`, maxWidth:"640px", display:"flex", justifyContent:"space-between", flexWrap:"wrap", gap:"16px", alignItems:"center" }}>
                 <div>
-                  <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:"21px", fontWeight:700 }}>Bachelor of Engineering</h3>
+                  <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:"21px", fontWeight:700 }}>Bachelor of Engineering (B.E.)</h3>
                   <div style={{ fontSize:"15px", color:C.accent, fontWeight:600, marginTop:"5px" }}>Electronics & Telecommunication Engineering (ENTC)</div>
-                  <div style={{ fontSize:"14px", color:C.muted, marginTop:"6px" }}>DR. D Y Patil College of Engineering, Pune</div>
+                  <div style={{ fontSize:"14px", color:C.muted, marginTop:"6px" }}>Dr. D. Y. Patil College of Engineering, affiliated to Savitribai Phule Pune University</div>
+                  <div style={{ fontSize:"13px", color:C.muted, marginTop:"4px" }}>CGPA: 7.68</div>
                 </div>
                 <div style={{ padding:"8px 18px", background:C.accentDim, color:C.accent, borderRadius:"20px", fontSize:"13px", fontWeight:700, fontFamily:"'JetBrains Mono',monospace", whiteSpace:"nowrap", alignSelf:"flex-start" }}>Class of 2023</div>
               </div>
@@ -408,7 +428,7 @@
                 Let's build something<br /><span style={{ color:C.accent }}>reliable together</span>
               </h2>
               <p style={{ fontSize:"16px", color:C.muted, maxWidth:"460px", margin:"0 auto 48px", lineHeight:1.8 }}>
-                Open to <strong style={{ color:C.text }}>QA Engineer</strong>, <strong style={{ color:C.text }}>SDET</strong>, and <strong style={{ color:C.text }}>Automation Specialist</strong> roles. Let's talk about raising quality at your organization.
+                Open to <strong style={{ color:C.text }}>Automation Test Engineer</strong> and <strong style={{ color:C.text }}>QA Engineer</strong> roles. Let's talk about raising quality at your organization.
               </p>
               <div style={{ display:"flex", gap:"12px", justifyContent:"center", flexWrap:"wrap", marginBottom:"20px" }}>
                 <a href="mailto:nehal.bobhate.it@gmail.com" className="nb-cta"
